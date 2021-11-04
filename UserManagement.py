@@ -6,7 +6,7 @@ import hashlib
 import os
 
 
-
+# Hier wird eine neue Datenbank erstellt. Falls dies nicht gewünscht ist "UserDatabase.db" mit relativemPfad der existierenden DB austauschen.
 um_connection = um.connect("UserDatabase.db")
 c = um_connection.cursor()
 
@@ -23,7 +23,7 @@ def createUser():
     c.execute('INSERT INTO users (username, password) VALUES (? , ? )', (userR, str(hashlib.sha1(passwordR).hexdigest())))
     um_connection.commit()
 
-# createUser()
+#createUser()
 
 def showUsers():
     for data in c.execute('SELECT * FROM users'):
