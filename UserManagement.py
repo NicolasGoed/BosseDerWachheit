@@ -6,24 +6,29 @@ import hashlib
 import os
 
 
-# Hier wird eine neue Datenbank erstellt. Falls dies nicht gewünscht ist "UserDatabase.db" mit relativemPfad der existierenden DB austauschen.
+# @Alf Hier wird dann bei dir eine neue Datenbank erstellt. Falls dies nicht gewünscht ist "UserDatabase.db" mit relativemPfad der existierenden DB austauschen.
 um_connection = um.connect("UserDatabase.db")
 c = um_connection.cursor()
 
+# Möglichkeit Tabelle zu löschen (Testzwecke)
 #c.execute('DROP TABLE users')
 
+# Erstellen der Tabelle für die Benutzerdaten innerhalb der SQLite Datenbank
 createTable = "CREATE TABLE IF NOT EXISTS users(id INTEGER PRIMARY KEY AUTOINCREMENT, username text UNIQUE, password text)"
 c.execute(createTable)
 
-#später Parameter übergeben mit Listener 
+# Hier wird der neue User erstellt. Zunächst Eingabe der Daten und dann Speichern in der Datenbank
 def createUser():
     userR = input('New User: ')
     passwordR = getpass.getpass('New Password: ')
     passwordR = passwordR.encode('utf-8')
     c.execute('INSERT INTO users (username, password) VALUES (? , ? )', (userR, str(hashlib.sha1(passwordR).hexdigest())))
+    # Hier wird mithilfe von hashlib das Passwort verschlüsselt. Dazu auch das Umwandeln in utf8 davor. Am Ende wird es erneut ein String zur Speicherung in der Datenbank
+    # Quellen für diesen Prozess: https://docs.python.org/3/library/hashlib.html, https://www.codegrepper.com/code-examples/python/how+to+convert+hash+to+string+in+python
     um_connection.commit()
 
-#createUser()
+
+
 
 def showUsers():
     for data in c.execute('SELECT * FROM users'):
@@ -51,5 +56,13 @@ def checkUser():
     else:
         print('Login failed')
 
-
+#createUser()
 checkUser()
+
+
+#DeleteUser
+#ChangeUser (Passwort und Benitzername verändern) (optinal)
+#@Frontend einen Button wo alle User sichtbar 
+#@Frontedn Benutzerverwaltung Button, nicht alle iwo im GUI 
+#@Frontend #später Parameter übergeben mit Listener 
+#Ordentlich kommentieren, hexdigest ausm Internet
