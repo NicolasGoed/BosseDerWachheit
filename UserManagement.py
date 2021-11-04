@@ -5,12 +5,12 @@ import sys
 import hashlib
 import os
 
-PYTHONHASHSEED = 1000
+
 
 um_connection = um.connect("UserDatabase.db")
 c = um_connection.cursor()
 
-# c.execute('DROP TABLE users')
+#c.execute('DROP TABLE users')
 
 createTable = "CREATE TABLE IF NOT EXISTS users(id INTEGER PRIMARY KEY AUTOINCREMENT, username text UNIQUE, password text)"
 c.execute(createTable)
@@ -19,8 +19,8 @@ c.execute(createTable)
 def createUser():
     userR = input('New User: ')
     passwordR = getpass.getpass('New Password: ')
-    
-    c.execute('INSERT INTO users (username, password) VALUES (? , ? )', (userR, hash(passwordR)))
+    passwordR = passwordR.encode('utf-8')
+    c.execute('INSERT INTO users (username, password) VALUES (? , ? )', (userR, str(hashlib.sha1(passwordR).hexdigest())))
     um_connection.commit()
 
 # createUser()
@@ -42,7 +42,7 @@ def checkUser():
     # Execute sql statement and grab all records where the "usuario" and
     # "senha" are the same as "user" and "password"
     password = password.encode('utf-8')
-    c.execute('SELECT * FROM users WHERE username = ? AND password = ?', (user, hash(password)))
+    c.execute('SELECT * FROM users WHERE username = ? AND password = ?', (user, str(hashlib.sha1(password).hexdigest())))
 
     # If nothing was found then c.fetchall() would be an empty list, which
     # evaluates to False 
