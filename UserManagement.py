@@ -10,12 +10,6 @@ import os
 um_connection = um.connect("UserDatabase.db")
 c = um_connection.cursor()
 
-# Möglichkeit Tabelle zu löschen (Testzwecke)
-#c.execute('DROP TABLE users')
-
-# Erstellen der Tabelle für die Benutzerdaten innerhalb der SQLite Datenbank
-createTable = "CREATE TABLE IF NOT EXISTS users(id INTEGER PRIMARY KEY AUTOINCREMENT, username text UNIQUE, password text)"
-c.execute(createTable)
 
 # Hier wird der neue User erstellt. Zunächst Eingabe der Daten und dann Speichern in der Datenbank
 def createUser():
@@ -33,8 +27,6 @@ def createUser():
 def showUsers():
     for data in c.execute('SELECT * FROM users'):
         print(data)
-
-showUsers()
 
 
 def checkUser():
@@ -56,9 +48,40 @@ def checkUser():
     else:
         print('Login failed')
 
-#createUser()
-checkUser()
+def changePassword():
+    # Get login details from user
+    user = input('User: ')
+    password = getpass.getpass('Old Password: ')
+    npassword = getpass.getpass('New Pasword : ')
+    npassword = npassword.encode('utf-8')
 
+    # später als funtkion 
+    # Execute sql statement and grab all records where the "usuario" and
+    # "senha" are the same as "user" and "password"
+    password = password.encode('utf-8')
+    c.execute('SELECT * FROM users WHERE username = ? AND password = ?', (user, str(hashlib.sha1(password).hexdigest())))
+
+    # If nothing was found then c.fetchall() would be an empty list, which
+    # evaluates to False 
+    if (c.fetchall()):
+        c.execute('UPDATE users SET password = ? WHERE username = ?', ( str(hashlib.sha1(npassword).hexdigest()), user))
+        print('Password of ' + user + ' was changed successfully')
+        um_connection.commit()
+    else:
+        print('Wrong password')
+
+# Möglichkeit Tabelle zu löschen (Testzwecke)
+#c.execute('DROP TABLE users')
+
+# Erstellen der Tabelle für die Benutzerdaten innerhalb der SQLite Datenbank
+createTable = "CREATE TABLE IF NOT EXISTS users(id INTEGER PRIMARY KEY AUTOINCREMENT, username text UNIQUE, password text)"
+c.execute(createTable)
+
+# createUser()
+checkUser()
+showUsers()
+# changePassword()
+# showUsers()
 
 #DeleteUser
 #ChangeUser (Passwort und Benitzername verändern) (optinal)
