@@ -13,6 +13,13 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIcon
 from signUp import Ui_Dialog
 
+
+
+
+
+def gedrueckt():
+    QtCore.QCoreApplication.instance().quit()
+
 class Ui_dialog(object):
     def openWindow(self):
        self.window = QtWidgets.QDialog()
@@ -68,10 +75,14 @@ class Ui_dialog(object):
         dialog.setWindowIcon(QIcon("dhbwStutt.png"))
         self.pushButton_2.clicked.connect(gedrueckt)
         self.pushButton_3.clicked.connect(self.openWindow)
+        self.pushButton.clicked.connect(self.usersdfsdf)
 
 
-def gedrueckt():
-        QtCore.QCoreApplication.instance().quit()
+
+
+    def usersdfsdf(self):
+     user = (self.lineEdit_2.text())
+     pw = self.lineEdit.text()
 
 
 
