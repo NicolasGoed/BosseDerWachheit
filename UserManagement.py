@@ -10,12 +10,6 @@ import os
 um_connection = um.connect("UserDatabase.db")
 c = um_connection.cursor()
 
-# Möglichkeit Tabelle zu löschen (Testzwecke)
-#c.execute('DROP TABLE users')
-
-# Erstellen der Tabelle für die Benutzerdaten innerhalb der SQLite Datenbank
-createTable = "CREATE TABLE IF NOT EXISTS users(id INTEGER PRIMARY KEY AUTOINCREMENT, username text UNIQUE, password text)"
-c.execute(createTable)
 
 # Hier wird der neue User erstellt. Zunächst Eingabe der Daten und dann Speichern in der Datenbank
 def createUser():
@@ -33,8 +27,6 @@ def createUser():
 def showUsers():
     for data in c.execute('SELECT * FROM users'):
         print(data)
-
-showUsers()
 
 
 def checkUser():
@@ -56,12 +48,66 @@ def checkUser():
     else:
         print('Login failed')
 
-#createUser()
-checkUser()
+def changePassword():
+    # Get login details from user
+    user = input('User: ')
+    password = getpass.getpass('Old Password: ')
+    npassword = getpass.getpass('New Pasword : ')
+    npassword = npassword.encode('utf-8')
 
+    # später als funtkion 
+    # Execute sql statement and grab all records where the "usuario" and
+    # "senha" are the same as "user" and "password"
+    password = password.encode('utf-8')
+    c.execute('SELECT * FROM users WHERE username = ? AND password = ?', (user, str(hashlib.sha1(password).hexdigest())))
 
-#DeleteUser
-#ChangeUser (Passwort und Benitzername verändern) (optinal)
+    # If nothing was found then c.fetchall() would be an empty list, which
+    # evaluates to False 
+    if (c.fetchall()):
+        c.execute('UPDATE users SET password = ? WHERE username = ?', ( str(hashlib.sha1(npassword).hexdigest()), user))
+        print('Password of ' + user + ' was changed successfully')
+        um_connection.commit()
+    else:
+        print('Wrong password')
+
+# Möglichkeit Tabelle zu löschen (Testzwecke)
+#c.execute('DROP TABLE users')
+
+# Erstellen der Tabelle für die Benutzerdaten innerhalb der SQLite Datenbank
+createTable = "CREATE TABLE IF NOT EXISTS users(id INTEGER PRIMARY KEY AUTOINCREMENT, username text UNIQUE, password text)"
+c.execute(createTable)
+
+def deleteUser():
+    showUsers()
+    # Get login details from user
+    user = input('User you want to delete: ')
+    password = getpass.getpass('Are you sure? Password: ')
+    id = input('Please type in the ID of your user, if you are sure: ')
+
+    # später als funtkion 
+    # Execute sql statement and grab all records where the "usuario" and
+    # "senha" are the same as "user" and "password"
+    password = password.encode('utf-8')
+    c.execute('SELECT * FROM users WHERE id = ? AND username = ? AND password = ?', (id, user, str(hashlib.sha1(password).hexdigest())))
+
+    # If nothing was found then c.fetchall() would be an empty list, which
+    # evaluates to False 
+    if (c.fetchall()):
+        c.execute('DELETE FROM users WHERE id = ? AND username = ? AND password = ?', ( id, user,str(hashlib.sha1(password).hexdigest())))
+        print('The' + user + ' was deleted successfully')
+        um_connection.commit()
+    else:
+        print('Wrong password')
+
+createUser()
+createUser()
+createUser()
+#checkUser()
+
+# changePassword()
+deleteUser()
+showUsers()
+
 #@Frontend einen Button wo alle User sichtbar 
 #@Frontedn Benutzerverwaltung Button, nicht alle iwo im GUI 
 #@Frontend #später Parameter übergeben mit Listener 
