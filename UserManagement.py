@@ -12,9 +12,9 @@ c = um_connection.cursor()
 
 
 # Hier wird der neue User erstellt. Zunächst Eingabe der Daten und dann Speichern in der Datenbank
-def createUser():
-    userR = input('New User: ')
-    passwordR = getpass.getpass('New Password: ')
+def createUser(userR, passwordR):
+    #userR = input('New User: ')
+    #passwordR = getpass.getpass('New Password: ')
     passwordR = passwordR.encode('utf-8')
     c.execute('INSERT INTO users (username, password) VALUES (? , ? )', (userR, str(hashlib.sha1(passwordR).hexdigest())))
     # Hier wird mithilfe von hashlib das Passwort verschlüsselt. Dazu auch das Umwandeln in utf8 davor. Am Ende wird es erneut ein String zur Speicherung in der Datenbank
@@ -29,10 +29,10 @@ def showUsers():
         print(data)
 
 
-def checkUser():
+def checkUser(user, password):
 # Get login details from user
-    user = input('User: ')
-    password = getpass.getpass('Password: ')
+    #user = input('User: ')
+    #password = getpass.getpass('Password: ')
 
 
     # später als funtkion 
@@ -99,16 +99,19 @@ def deleteUser():
     else:
         print('Wrong password')
 
-#createUser()
-#createUser()
-#createUser()
-checkUser()
 
-# changePassword()
-deleteUser()
-showUsers()
 
-#@Frontend einen Button wo alle User sichtbar 
-#@Frontedn Benutzerverwaltung Button, nicht alle iwo im GUI 
-#@Frontend #später Parameter übergeben mit Listener 
-#Ordentlich kommentieren, hexdigest ausm Internet
+
+    #createUser()
+    #createUser()
+    #createUser()
+    #checkUser()
+
+    # changePassword()
+    #deleteUser()
+    #showUsers()
+
+    #@Frontend einen Button wo alle User sichtbar
+    #@Frontedn Benutzerverwaltung Button, nicht alle iwo im GUI
+    #@Frontend #später Parameter übergeben mit Listener
+    #Ordentlich kommentieren, hexdigest ausm Internet

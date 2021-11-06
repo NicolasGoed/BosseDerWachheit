@@ -12,6 +12,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIcon
 from signUp import Ui_Dialog
+from UserManagement import *
 
 
 
@@ -75,15 +76,12 @@ class Ui_dialog(object):
         dialog.setWindowIcon(QIcon("dhbwStutt.png"))
         self.pushButton_2.clicked.connect(gedrueckt)
         self.pushButton_3.clicked.connect(self.openWindow)
-        self.pushButton.clicked.connect(self.usersdfsdf)
+        self.pushButton.clicked.connect(self.userSignIn)
 
-
-
-
-    def usersdfsdf(self):
+    def userSignIn(self):
      user = (self.lineEdit_2.text())
      pw = self.lineEdit.text()
-
+     checkUser(user, pw)
 
 
 if __name__ == "__main__":

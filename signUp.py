@@ -9,9 +9,11 @@
 
 
 from PyQt5 import QtCore, QtWidgets
+from UserManagement import *
 
 
-
+def closeapp():
+    QtCore.QCoreApplication.instance().quit()  #schliesst window, wenn "Cancel" gedrückt wird
 
 class Ui_Dialog(object):
 
@@ -63,9 +65,14 @@ class Ui_Dialog(object):
         self.label_4.setText(_translate("Dialog", "Confirm Password"))
         self.pushButton_3.setText(_translate("Dialog", "Sign up"))
         self.pushButton_4.setText(_translate("Dialog", "Close"))
-        self.pushButton_4.pressed.connect(closeapp)
-def closeapp():
-    QtCore.QCoreApplication.instance().quit()  #schliesst window, wenn "Cancel" gedrückt wird
+        self.pushButton_3.clicked.connect(self.userSignUp)
+        self.pushButton_4.clicked.connect(closeapp)
+
+    def userSignUp(self):
+        user = (self.lineEdit_2.text())
+        pw = (self.lineEdit.text())
+        pw_Wdh = (self.lineEdit_3.text())
+        createUser(user, pw, pw_Wdh)
 
 
 if __name__ == "__main__":
