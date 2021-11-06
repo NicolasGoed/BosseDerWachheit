@@ -74,7 +74,7 @@ def changePassword():
 #c.execute('DROP TABLE users')
 
 # Erstellen der Tabelle für die Benutzerdaten innerhalb der SQLite Datenbank
-createTable = "CREATE TABLE IF NOT EXISTS users(id INTEGER PRIMARY KEY AUTOINCREMENT, username text UNIQUE, password text)"
+createTable = "CREATE TABLE IF NOT EXISTS users( username text UNIQUE PRIMARY KEY, password text)"
 c.execute(createTable)
 
 def deleteUser():
@@ -82,27 +82,27 @@ def deleteUser():
     # Get login details from user
     user = input('User you want to delete: ')
     password = getpass.getpass('Are you sure? Password: ')
-    id = input('Please type in the ID of your user, if you are sure: ')
+    
 
     # später als funtkion 
     # Execute sql statement and grab all records where the "usuario" and
-    # "senha" are the same as "user" and "password"
+    # "senha" are the same as "user" and "password" 
     password = password.encode('utf-8')
-    c.execute('SELECT * FROM users WHERE id = ? AND username = ? AND password = ?', (id, user, str(hashlib.sha1(password).hexdigest())))
+    c.execute('SELECT * FROM users WHERE username = ? AND password = ?', ( user, str(hashlib.sha1(password).hexdigest())))
 
     # If nothing was found then c.fetchall() would be an empty list, which
     # evaluates to False 
     if (c.fetchall()):
-        c.execute('DELETE FROM users WHERE id = ? AND username = ? AND password = ?', ( id, user,str(hashlib.sha1(password).hexdigest())))
-        print('The' + user + ' was deleted successfully')
+        c.execute('DELETE FROM users WHERE username = ? AND password = ?', ( user,str(hashlib.sha1(password).hexdigest())))
+        print('The user ' + user + ' was deleted successfully')
         um_connection.commit()
     else:
         print('Wrong password')
 
-createUser()
-createUser()
-createUser()
-#checkUser()
+#createUser()
+#createUser()
+#createUser()
+checkUser()
 
 # changePassword()
 deleteUser()
