@@ -71,7 +71,7 @@ class Ui_Dialog(object):
     def userSignUp(self):
         user = (self.lineEdit_2.text())
         pw = (self.lineEdit.text())
-        pw_Wdh = (self.lineEdit_3.text())
+        pw_Wdh = self.lineEdit_3.text()
         createUser(user, pw, pw_Wdh)
 
 

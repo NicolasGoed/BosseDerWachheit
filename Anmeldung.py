@@ -79,7 +79,7 @@ class Ui_dialog(object):
         self.pushButton.clicked.connect(self.userSignIn)
 
     def userSignIn(self):
-     user = (self.lineEdit_2.text())
+     user = self.lineEdit_2.text()
      pw = self.lineEdit.text()
      checkUser(user, pw)
 
