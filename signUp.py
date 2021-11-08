@@ -69,10 +69,12 @@ class Ui_Dialog(object):
         self.pushButton_4.clicked.connect(closeapp)
 
     def userSignUp(self):
-        user = (self.lineEdit_2.text())
-        pw = (self.lineEdit.text())
+        user = self.lineEdit_2.text()
+        pw = self.lineEdit.text()
         pw_Wdh = self.lineEdit_3.text()
-        createUser(user, pw, pw_Wdh)
+        passwordthesame = comparePassword(pw, pw_Wdh)
+        print(passwordthesame)
+        #createUser(user, pw)
 
 
 if __name__ == "__main__":

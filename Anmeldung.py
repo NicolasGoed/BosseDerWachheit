@@ -11,8 +11,11 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIcon
+from PyQt5.QtWidgets import QMessageBox
+
 from signUp import Ui_Dialog
 from UserManagement import *
+import time
 
 
 
@@ -81,8 +84,17 @@ class Ui_dialog(object):
     def userSignIn(self):
      user = self.lineEdit_2.text()
      pw = self.lineEdit.text()
-     checkUser(user, pw)
+     if (checkUser(user, pw)):
+         print(12)
+     else:
+         mmm()
 
+
+def mmm():
+    msg = QMessageBox()
+    msg.setWindowTitle("Fehler")
+    msg.setText("bitte nochmal eingeben")
+    x = msg.exec_()
 
 if __name__ == "__main__":
     import sys

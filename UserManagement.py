@@ -21,6 +21,8 @@ def createUser(userR, passwordR):
     # Quellen für diesen Prozess: https://docs.python.org/3/library/hashlib.html, https://www.codegrepper.com/code-examples/python/how+to+convert+hash+to+string+in+python
     um_connection.commit()
 
+def comparePassword(pw, pwWdh):
+    return pw == pwWdh
 
 
 
@@ -29,7 +31,7 @@ def showUsers():
         print(data)
 
 
-def checkUser(user, password):
+def  checkUser(user, password):
 # Get login details from user
     #user = input('User: ')
     #password = getpass.getpass('Password: ')
@@ -44,9 +46,9 @@ def checkUser(user, password):
     # If nothing was found then c.fetchall() would be an empty list, which
     # evaluates to False 
     if (c.fetchall()):
-        print('Welcome ' + user)
+        return True
     else:
-        print('Login failed')
+        return False
 
 def changePassword():
     # Get login details from user
@@ -101,8 +103,9 @@ def deleteUser():
 
 
 
+#if __name__ == '__main__':
 
-    #createUser()
+    #createUser("Niklas", "Merkel")
     #createUser()
     #createUser()
     #checkUser()
