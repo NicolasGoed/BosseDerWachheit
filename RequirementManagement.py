@@ -8,7 +8,8 @@ currentRequirement = None
 um_connection = um.connect("Database.db")
 c = um_connection.cursor()
 
-c.execute('DROP TABLE Requirements')
+def dropTable():
+    c.execute('DROP TABLE Requirements')
 
 createTable = """CREATE TABLE IF NOT EXISTS Requirements( 
     requirementid INTEGER UNIQUE PRIMARY KEY, 
@@ -40,7 +41,11 @@ def createRequirement():
         requirementtext,
         specificationtext) 
         VALUES (?, ?, ?, ?, ?, ?, ? )"""
-        , (requirementName, dateString, dateString, getcurrentProject()  ,UserManagement.currentUser, reqText, specText ))
+        , (requirementName, 
+        dateString, dateString, 
+        getcurrentProject()  ,
+        UserManagement.currentUser, 
+        reqText, specText ))
 
     um_connection.commit()
 
