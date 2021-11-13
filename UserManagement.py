@@ -5,9 +5,12 @@ import sys
 import hashlib
 import os
 
+currentUser = None
+def setcurrentUser(currentUser1): 
+    currentUser = currentUser1
 
 # @Alf Hier wird dann bei dir eine neue Datenbank erstellt. Falls dies nicht gewünscht ist "UserDatabase.db" mit relativemPfad der existierenden DB austauschen.
-um_connection = um.connect("UserDatabase.db")
+um_connection = um.connect("Database.db")
 c = um_connection.cursor()
 
 
@@ -36,16 +39,17 @@ def  checkUser(user, password):
     #user = input('User: ')
     #password = getpass.getpass('Password: ')
 
-
+    
     # später als funtkion 
     # Execute sql statement and grab all records where the "usuario" and
     # "senha" are the same as "user" and "password"
     password = password.encode('utf-8')
     c.execute('SELECT * FROM users WHERE username = ? AND password = ?', (user, str(hashlib.sha1(password).hexdigest())))
-
     # If nothing was found then c.fetchall() would be an empty list, which
     # evaluates to False 
     if (c.fetchall()):
+        global currentUser
+        currentUser = user
         return True
     else:
         return False
@@ -103,18 +107,20 @@ def deleteUser():
 
 
 
-#if __name__ == '__main__':
 
-    #createUser("Niklas", "Merkel")
-    #createUser()
-    #createUser()
-    #checkUser()
 
-    # changePassword()
-    #deleteUser()
-    #showUsers()
 
-    #@Frontend einen Button wo alle User sichtbar
-    #@Frontedn Benutzerverwaltung Button, nicht alle iwo im GUI
-    #@Frontend #später Parameter übergeben mit Listener
-    #Ordentlich kommentieren, hexdigest ausm Internet
+
+#createUser("Niklas", "Merkel")
+#createUser(Fler, Test)
+#createUser("Fler56", "Merkel")
+checkUser("Fler56", "Merkel")
+#print(currentUser)
+# changePassword()
+#deleteUser()
+#showUsers()
+
+#@Frontend einen Button wo alle User sichtbar
+#@Frontedn Benutzerverwaltung Button, nicht alle iwo im GUI
+#@Frontend #später Parameter übergeben mit Listener
+#Ordentlich kommentieren, hexdigest ausm Internet
