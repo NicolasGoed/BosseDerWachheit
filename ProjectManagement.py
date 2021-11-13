@@ -2,7 +2,10 @@ from datetime import datetime
 import sqlite3 as um
 import UserManagement
 
-Pnow = ''
+currentProject = ''
+
+def getcurrentProject():
+    return currentProject
 
 um_connection = um.connect("Database.db")
 c = um_connection.cursor()
@@ -18,15 +21,15 @@ def createProject():
     projectdate = datetime.now()
     dateString = projectdate.strftime("%d/%m/%Y %H:%M:%S")
     c.execute('INSERT INTO Projects (projectname, creationdate, user) VALUES (?, ?, ? )', (projectname, dateString, UserManagement.currentUser ))
-    global Pnow 
-    for Pnow in c.execute(' SELECT projectid FROM projects WHERE projectname = ? AND creationdate = ? AND user = ?',(projectname, dateString, UserManagement.currentUser )):
-        Pnow = Pnow
+    global currentProject 
+    for currentProject in c.execute(' SELECT projectid FROM projects WHERE projectname = ? AND creationdate = ? AND user = ?',(projectname, dateString, UserManagement.currentUser )):
+        currentProject = currentProject
         
     um_connection.commit()
 
 
 def deleteProject():
-    c.execute('DELETE FROM Projects WHERE projectid = ? ', (Pnow))
+    c.execute('DELETE FROM Projects WHERE projectid = ? ', (currentProject))
 
 
 
@@ -38,10 +41,10 @@ def showProjects():
 
 
 #UserManagement.showUsers()
-createProject()
-createProject()
-showProjects()
-deleteProject()
-print("------------")
-showProjects()
+#createProject()
+#createProject()
+#showProjects()
+#deleteProject()
+#print("------------")
+#showProjects()
 
