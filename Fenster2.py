@@ -211,7 +211,7 @@ class Ui_AnforderungUndSpezifikation(object):
         #self.label_3.setObjectName("label_3")
         self.lineEdit = QtWidgets.QLineEdit(AnforderungUndSpezifikation)
         self.lineEdit.setGeometry(QtCore.QRect(40, 140, 151, 22))
-        self.lineEdit.setObjectName("lineEdit Produktname")
+        self.lineEdit.setObjectName("lineEdit Projektname")
         self.label = QtWidgets.QLabel(AnforderungUndSpezifikation)
         self.label.setGeometry(QtCore.QRect(40, 120, 500, 16))
         self.label.setObjectName("Überschrift Projektname")
@@ -251,7 +251,7 @@ class Ui_AnforderungUndSpezifikation(object):
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:7.8pt;\"><br /></p></body></html>"))
         self.textEdit.setPlaceholderText(_translate("AnforderungUndSpezifikation", "Spezifikation"))
         #self.label_3.setText(_translate("AnforderungUndSpezifikation", "Vorhandenes Projekt auswählen:"))
-        self.lineEdit.setPlaceholderText(_translate("AnforderungUndSpezifikation", "Produktname"))
+        self.lineEdit.setPlaceholderText(_translate("AnforderungUndSpezifikation", "Projektname"))
 
         # Projektname ist nicht änderbar!
         self.lineEdit.setEnabled(False)
@@ -353,7 +353,7 @@ class Ui_UpdateAnforderungUndSpezifikation(object):
         #self.label_3.setObjectName("label_3")
         self.lineEdit = QtWidgets.QLineEdit(AnforderungUndSpezifikation)
         self.lineEdit.setGeometry(QtCore.QRect(40, 140, 151, 22))
-        self.lineEdit.setObjectName("lineEdit Produktname")
+        self.lineEdit.setObjectName("lineEdit Projektname")
         self.label = QtWidgets.QLabel(AnforderungUndSpezifikation)
         self.label.setGeometry(QtCore.QRect(40, 120, 500, 16))
         self.label.setObjectName("Überschrift Projektname")
@@ -392,7 +392,7 @@ class Ui_UpdateAnforderungUndSpezifikation(object):
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:7.8pt;\"><br /></p></body></html>"))
         self.textEdit.setPlaceholderText(_translate("AnforderungUndSpezifikation", "Spezifikation"))
         #self.label_3.setText(_translate("AnforderungUndSpezifikation", "Vorhandenes Projekt auswählen:"))
-        self.lineEdit.setPlaceholderText(_translate("AnforderungUndSpezifikation", "Produktname"))
+        self.lineEdit.setPlaceholderText(_translate("AnforderungUndSpezifikation", "Projektname"))
         
         # Projektname ist nicht änderbar!
         self.lineEdit.setEnabled(False)
