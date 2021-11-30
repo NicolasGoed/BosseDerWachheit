@@ -28,6 +28,9 @@ class Ui_dialog(object):
 
 
     def openWindow(self):
+       """[summary]
+
+       """
        self.window = QtWidgets.QDialog()
        self.ui = SignUp()
        self.ui.setupUi(self.window)
