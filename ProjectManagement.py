@@ -10,14 +10,16 @@ def getcurrentProject():
 um_connection = um.connect("Database.db")
 c = um_connection.cursor()
 
-c.execute('DROP TABLE Projects')
+## DROP löscht jedes Mal alle Projekte --> nicht sinnvoll --> bitte auskommentiert lassen // Thi
+# c.execute('DROP TABLE Projects')
+
 
 createTable = "CREATE TABLE IF NOT EXISTS Projects( projectid INTEGER UNIQUE PRIMARY KEY, projectname TEXT NOT NULL, creationdate TEXT, user TEXT NOT NULL REFERENCES user(username))"
 c.execute(createTable)
 
 
-def createProject():
-    projectname = input('Projectname: ')
+def createProject(projectname):
+    #projectname = input('Projectname: ') // sonst funktioniert die Connection nicht// Thi
     projectdate = datetime.now()
     dateString = projectdate.strftime("%d/%m/%Y %H:%M:%S")
     c.execute('INSERT INTO Projects (projectname, creationdate, user) VALUES (?, ?, ? )', (projectname, dateString, UserManagement.currentUser ))
@@ -27,16 +29,34 @@ def createProject():
         
     um_connection.commit()
 
-
-def deleteProject():
-    c.execute('DELETE FROM Projects WHERE projectid = ? ', (currentProject))
+#createProject()
 
 
+
+
+def deleteProject(currentProject):
+    c.execute('DELETE FROM Projects WHERE projectname = ? ', (currentProject, )) #// in name geändert, da das sonst nicht funktioniert // Thi
+    um_connection.commit()
+
+#Original
+#def showProjects():
+ #   for data in c.execute('SELECT * FROM Projects'):
+  #      print(data)
+#        return data
 
 
 def showProjects():
-    for data in c.execute('SELECT * FROM Projects'):
-        print(data)
+    data = list(c.execute('SELECT * FROM Projects'))
+    return data
+#print(showProjects())
+#showProjects()
+
+
+def showProjectsName():
+      
+    data = c.execute('SELECT DISTINCT projectname FROM Projects')
+    array = list(data)
+    return array
 
 
 

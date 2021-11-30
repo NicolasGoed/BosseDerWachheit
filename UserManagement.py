@@ -5,11 +5,13 @@ import sys
 import hashlib
 import os
 
-currentUser = None
+currentUser = "a"
+# currentUser = None
 def setcurrentUser(currentUser1): 
     currentUser = currentUser1
 
 # @Alf Hier wird dann bei dir eine neue Datenbank erstellt. Falls dies nicht gewünscht ist "UserDatabase.db" mit relativemPfad der existierenden DB austauschen.
+# THI: Die Datei habe ich gelöscht, daher den obigen Kommentar löschen? Sonst funktioniert das Programm nicht 
 um_connection = um.connect("Database.db")
 c = um_connection.cursor()
 
@@ -24,6 +26,8 @@ def createUser(userR, passwordR):
     # Quellen für diesen Prozess: https://docs.python.org/3/library/hashlib.html, https://www.codegrepper.com/code-examples/python/how+to+convert+hash+to+string+in+python
     um_connection.commit()
 
+#createUser("a", "a")
+
 def comparePassword(pw, pwWdh):
     return pw == pwWdh
 
@@ -34,6 +38,7 @@ def showUsers():
         print(data)
 
 
+# # THI: user, passwort als parameter ergänzt
 def  checkUser(user, password):
 # Get login details from user
     #user = input('User: ')
@@ -114,7 +119,7 @@ def deleteUser():
 #createUser("Niklas", "Merkel")
 #createUser(Fler, Test)
 #createUser("Fler56", "Merkel")
-checkUser("Fler56", "Merkel")
+#checkUser()
 #print(currentUser)
 # changePassword()
 #deleteUser()
