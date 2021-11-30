@@ -10,7 +10,6 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from RequirementManagement import *
-#from CreateRequirementWindow import Ui_AnforderungUndSpezifikation
 from Lastenheft import LastenheftFenster
 from Pflichtenheft import PflichtenheftFenster
 from PyQt5.QtWidgets import QMessageBox
@@ -19,6 +18,10 @@ from PyQt5.QtWidgets import QMessageBox
 #passing variable to different script
 #if running this function on its own there is no selected Project passed in. so it won't run
 #
+
+
+############################################################################################################
+### 1. Klasse - Fenster - Anfoderungsliste
 
 class Anforderungsliste(object):
     """[summary]
@@ -49,7 +52,6 @@ class Anforderungsliste(object):
             self.window = QtWidgets.QDialog()
             self.ui = Ui_UpdateAnforderungUndSpezifikation(self.selectedProject, self.currentuser, selectedreq)
             self.ui.setupUi(self.window)
-            #Fenster2.hide()
             self.window.show()   
         except:
             mmm1()
@@ -59,7 +61,6 @@ class Anforderungsliste(object):
        self.window = QtWidgets.QDialog()
        self.ui = LastenheftFenster(self.selectedProject)
        self.ui.setupUi(self.window)
-       #Fenster2.hide()
        self.window.show()
 
        # Thi dok
@@ -67,7 +68,6 @@ class Anforderungsliste(object):
        self.window = QtWidgets.QDialog()
        self.ui = PflichtenheftFenster(self.selectedProject)
        self.ui.setupUi(self.window)
-       #Fenster2.hide()
        self.window.show()
 
    # Thi dok
@@ -79,7 +79,6 @@ class Anforderungsliste(object):
             self.window = QtWidgets.QDialog()
             self.ui = Anforderungsliste(self.selectedProject, self.currentuser )
             self.ui.setupUi(self.window)
-            #self.window.hide()
             QtWidgets.QApplication.activeWindow().close()
             self.window.show()
 
@@ -137,7 +136,6 @@ class Anforderungsliste(object):
     # Niki Dok
     def retranslateUi(self, Fenster2):
         _translate = QtCore.QCoreApplication.translate
-        #Fenster2.setWindowTitle(_translate("Fenster2", "Fenster2"))
         self.pushButton.setText(_translate("Fenster2", "Lastenheft"))
         self.pushButton_2.setText(_translate("Fenster2", "Pflichtenheft"))
         self.pushButton_3.setText(_translate("Fenster2", "Erstellen"))
@@ -157,17 +155,15 @@ class Anforderungsliste(object):
         self.pushButton_5.clicked.connect(self.deleteAnforderung)
         
         
-##########################################################
-###add new requirement
+############################################################################################################
+### 2. Klasse - Fenster - Anforderung erstellen
+
 class Ui_AnforderungUndSpezifikation(object):
 
     # Thi
     def __init__(self, selectedProject, currentuser):
         self.selectedProject = selectedProject
         self.currentuser = currentuser
-
-
-
 
     # Niki Dok
     def setupUi(self, AnforderungUndSpezifikation):
@@ -183,34 +179,14 @@ class Ui_AnforderungUndSpezifikation(object):
         self.lineEdit_2.setGeometry(QtCore.QRect(40, 220, 361, 22))
         self.lineEdit_2.setText("")
         self.lineEdit_2.setObjectName("lineEdit Anforderung")
-        #self.checkBox = QtWidgets.QCheckBox(AnforderungUndSpezifikation)
-        #self.checkBox.setGeometry(QtCore.QRect(40, 170, 100, 20))
-        #self.checkBox.setObjectName("checkBox")
-        #self.checkBox_2 = QtWidgets.QCheckBox(AnforderungUndSpezifikation)
-        #self.checkBox_2.setGeometry(QtCore.QRect(40, 260, 100, 20))
-        #self.checkBox_2.setObjectName("checkBox_2")
         self.lineEdit_4 = QtWidgets.QLineEdit(AnforderungUndSpezifikation)
-        self.lineEdit_4.setGeometry(QtCore.QRect(40, 60, 151, 22))
+        self.lineEdit_4.setGeometry(QtCore.QRect(40, 60, 361, 22))
         self.lineEdit_4.setObjectName("lineEdit User")
-        #self.lineEdit_5 = QtWidgets.QLineEdit(AnforderungUndSpezifikation)
-        #self.lineEdit_5.setGeometry(QtCore.QRect(290, 30, 113, 22))
-        #self.lineEdit_5.setText("")
-        #self.lineEdit_5.setObjectName("lineEdit_5")
         self.textEdit = QtWidgets.QTextEdit(AnforderungUndSpezifikation)
         self.textEdit.setGeometry(QtCore.QRect(40, 310, 361, 131))
         self.textEdit.setObjectName("textEdit Spezifikation")
-        #self.comboBox = QtWidgets.QComboBox(AnforderungUndSpezifikation)
-        #self.comboBox.setGeometry(QtCore.QRect(40, 100, 151, 22))
-        #self.comboBox.setObjectName("comboBox")
-        #self.comboBox.addItem("")
-        #self.comboBox.setItemText(0, "")
-        #self.comboBox.addItem("")
-        #self.comboBox.setItemText(1, "")
-        #self.label_3 = QtWidgets.QLabel(AnforderungUndSpezifikation)
-        #self.label_3.setGeometry(QtCore.QRect(40, 70, 211, 16))
-        #self.label_3.setObjectName("label_3")
         self.lineEdit = QtWidgets.QLineEdit(AnforderungUndSpezifikation)
-        self.lineEdit.setGeometry(QtCore.QRect(40, 140, 151, 22))
+        self.lineEdit.setGeometry(QtCore.QRect(40, 140, 361, 22))
         self.lineEdit.setObjectName("lineEdit Projektname")
         self.label = QtWidgets.QLabel(AnforderungUndSpezifikation)
         self.label.setGeometry(QtCore.QRect(40, 120, 500, 16))
@@ -236,21 +212,18 @@ class Ui_AnforderungUndSpezifikation(object):
         AnforderungUndSpezifikation.setWindowTitle(_translate("AnforderungUndSpezifikation", "Anforderung und Spezifikation"))
         self.pushButton.setText(_translate("AnforderungUndSpezifikation", "Speichern"))
         self.lineEdit_2.setPlaceholderText(_translate("AnforderungUndSpezifikation", "Anforderung"))
-        #self.checkBox.setText(_translate("AnforderungUndSpezifikation", "Lastenheft"))
-        #self.checkBox_2.setText(_translate("AnforderungUndSpezifikation", "Pflichtenheft"))
         self.lineEdit_4.setPlaceholderText(_translate("AnforderungUndSpezifikation", "User"))
         
         # User ist nicht änderbar! // Thi
         self.lineEdit_4.setEnabled(False)
 
-        #self.lineEdit_5.setPlaceholderText(_translate("AnforderungUndSpezifikation", "Datum"))
         self.textEdit.setHtml(_translate("AnforderungUndSpezifikation", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:6.6pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:7.8pt;\"><br /></p></body></html>"))
+        
         self.textEdit.setPlaceholderText(_translate("AnforderungUndSpezifikation", "Spezifikation"))
-        #self.label_3.setText(_translate("AnforderungUndSpezifikation", "Vorhandenes Projekt auswählen:"))
         self.lineEdit.setPlaceholderText(_translate("AnforderungUndSpezifikation", "Projektname"))
 
         # Projektname ist nicht änderbar!
@@ -266,6 +239,7 @@ class Ui_AnforderungUndSpezifikation(object):
         
         self.lineEdit.setText(self.selectedProject)
         self.lineEdit_4.setText(self.currentuser)
+
         #Speichern --> Speichert alle Werte des Fensters + Schließt das Fenster + Kehrt zum Fenster2 zurück + Updated die Liste der Anforderungen
         self.pushButton.clicked.connect(self.openFensterAfterSaving)
     
@@ -284,7 +258,6 @@ class Ui_AnforderungUndSpezifikation(object):
         createRequirement(self.projectname, self.reqname, eachSpec)
       
        QtWidgets.QApplication.activeWindow().close()
-       #QtWidgets.QApplication.
        self.window = QtWidgets.QDialog()
        self.ui = Anforderungsliste(self.selectedProject, self.currentuser )
        self.ui.setupUi(self.window)
@@ -292,7 +265,9 @@ class Ui_AnforderungUndSpezifikation(object):
        self.window.show()
     
 
-###update requirement   
+############################################################################################################
+### 2. Klasse - Fenster - Anforderung bearbeiten
+
 class Ui_UpdateAnforderungUndSpezifikation(object):
 
     # Thi Dok
@@ -325,34 +300,14 @@ class Ui_UpdateAnforderungUndSpezifikation(object):
         self.lineEdit_2.setGeometry(QtCore.QRect(40, 220, 361, 22))
         self.lineEdit_2.setText("")
         self.lineEdit_2.setObjectName("lineEdit Anforderung")
-        #self.checkBox = QtWidgets.QCheckBox(AnforderungUndSpezifikation)
-        #self.checkBox.setGeometry(QtCore.QRect(40, 170, 100, 20))
-        #self.checkBox.setObjectName("checkBox")
-        #self.checkBox_2 = QtWidgets.QCheckBox(AnforderungUndSpezifikation)
-        #self.checkBox_2.setGeometry(QtCore.QRect(40, 260, 100, 20))
-        #self.checkBox_2.setObjectName("checkBox_2")
         self.lineEdit_4 = QtWidgets.QLineEdit(AnforderungUndSpezifikation)
-        self.lineEdit_4.setGeometry(QtCore.QRect(40, 60, 151, 22))
+        self.lineEdit_4.setGeometry(QtCore.QRect(40, 60, 361, 22))
         self.lineEdit_4.setObjectName("lineEdit User")
-        #self.lineEdit_5 = QtWidgets.QLineEdit(AnforderungUndSpezifikation)
-        #self.lineEdit_5.setGeometry(QtCore.QRect(290, 30, 113, 22))
-        #self.lineEdit_5.setText("")
-        #self.lineEdit_5.setObjectName("lineEdit_5")
         self.textEdit = QtWidgets.QTextEdit(AnforderungUndSpezifikation)
         self.textEdit.setGeometry(QtCore.QRect(40, 310, 361, 131))
         self.textEdit.setObjectName("textEdit Spezifikation")
-        #self.comboBox = QtWidgets.QComboBox(AnforderungUndSpezifikation)
-        #self.comboBox.setGeometry(QtCore.QRect(40, 100, 151, 22))
-        #self.comboBox.setObjectName("comboBox")
-        #self.comboBox.addItem("")
-        #self.comboBox.setItemText(0, "")
-        #self.comboBox.addItem("")
-        #self.comboBox.setItemText(1, "")
-        #self.label_3 = QtWidgets.QLabel(AnforderungUndSpezifikation)
-        #self.label_3.setGeometry(QtCore.QRect(40, 70, 211, 16))
-        #self.label_3.setObjectName("label_3")
         self.lineEdit = QtWidgets.QLineEdit(AnforderungUndSpezifikation)
-        self.lineEdit.setGeometry(QtCore.QRect(40, 140, 151, 22))
+        self.lineEdit.setGeometry(QtCore.QRect(40, 140, 361, 22))
         self.lineEdit.setObjectName("lineEdit Projektname")
         self.label = QtWidgets.QLabel(AnforderungUndSpezifikation)
         self.label.setGeometry(QtCore.QRect(40, 120, 500, 16))
@@ -378,20 +333,18 @@ class Ui_UpdateAnforderungUndSpezifikation(object):
         AnforderungUndSpezifikation.setWindowTitle(_translate("AnforderungUndSpezifikation", "Anforderung und Spezifikation"))
         self.pushButton.setText(_translate("AnforderungUndSpezifikation", "Speichern"))
         self.lineEdit_2.setPlaceholderText(_translate("AnforderungUndSpezifikation", "Anforderung"))
-        #self.checkBox.setText(_translate("AnforderungUndSpezifikation", "Lastenheft"))
-        #self.checkBox_2.setText(_translate("AnforderungUndSpezifikation", "Pflichtenheft"))
         self.lineEdit_4.setPlaceholderText(_translate("AnforderungUndSpezifikation", "User"))
         
         # User ist nicht änderbar!
         self.lineEdit_4.setEnabled(False)
-        #self.lineEdit_5.setPlaceholderText(_translate("AnforderungUndSpezifikation", "Datum"))
+
         self.textEdit.setHtml(_translate("AnforderungUndSpezifikation", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:6.6pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:7.8pt;\"><br /></p></body></html>"))
+        
         self.textEdit.setPlaceholderText(_translate("AnforderungUndSpezifikation", "Spezifikation"))
-        #self.label_3.setText(_translate("AnforderungUndSpezifikation", "Vorhandenes Projekt auswählen:"))
         self.lineEdit.setPlaceholderText(_translate("AnforderungUndSpezifikation", "Projektname"))
         
         # Projektname ist nicht änderbar!
@@ -440,6 +393,7 @@ class Ui_UpdateAnforderungUndSpezifikation(object):
        self.ui.setupUi(self.window)
        self.window.hide()
        self.window.show()
+
 ##########################################################
 
 # Niki Dok
@@ -455,6 +409,7 @@ def mmm1():
     msg.setWindowTitle("Fehler")
     msg.setText("Bitte wählen Sie eine Anforderung zum Änderung aus.")
     x = msg.exec_()
+
 ##########################################################
 
 if __name__ == "__main__":

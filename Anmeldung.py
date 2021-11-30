@@ -16,7 +16,8 @@ from MainWindowRequirement import MainFunction
 from UserManagement import createUser, checkUser
 from PyQt5.QtWidgets import QMessageBox
 
-#showUsers()
+######################################################################################################
+### 1. Klasse Ui_dialog
 
 class Ui_dialog(object):
     """[summary]
@@ -47,12 +48,10 @@ class Ui_dialog(object):
         dialog.setAutoFillBackground(False)
         self.lineEdit = QtWidgets.QLineEdit(dialog)
         self.lineEdit.setGeometry(QtCore.QRect(80, 170, 221, 31))
-        #self.lineEdit.setText("Username")
         self.lineEdit.setEchoMode(QtWidgets.QLineEdit.Password)
         self.lineEdit.setObjectName("lineEdit")
         self.lineEdit_2 = QtWidgets.QLineEdit(dialog)
         self.lineEdit_2.setGeometry(QtCore.QRect(80, 110, 221, 31))
-        #self.lineEdit_2.setText("Password")
         self.lineEdit_2.setObjectName("lineEdit_2")
         self.pushButton = QtWidgets.QPushButton(dialog)
         self.pushButton.setGeometry(QtCore.QRect(80, 210, 111, 23))
@@ -86,25 +85,21 @@ class Ui_dialog(object):
         self.label_2.setText(_translate("dialog", "Passwort"))
         self.label_3.setText(_translate("dialog", "Username"))
         self.pushButton_3.setText(_translate("dialog", "Neuen User registrieren"))
-        dialog.setWindowIcon(QIcon("dhbwStutt.png"))
-        self.pushButton_2.clicked.connect(gedrueckt)
-        self.pushButton_3.clicked.connect(self.openWindow)
-
-        #self.pushButton.clicked.connect(self.openLogin)
+        #dialog.setWindowIcon(QIcon("dhbwStutt.png"))
 
         self.lineEdit.setPlaceholderText(_translate("Dialog", "Passwort"))
         self.lineEdit_2.setPlaceholderText(_translate("Dialog", "Username"))
 
         self.pushButton.clicked.connect(self.login_button_click)
+        self.pushButton_2.clicked.connect(gedrueckt)
+        self.pushButton_3.clicked.connect(self.openWindow)
 
     # Thi. Dok
     def login_button_click(self):
-    #        self.openAnmeldung
             # shost is a QString object
             shost = self.lineEdit_2.text()
             pword = self.lineEdit.text()
             
-           # print(shost)
             if (checkUser(shost, pword)):
                 currentuser = shost
                 self.window = QtWidgets.QDialog()
@@ -129,7 +124,8 @@ def gedrueckt():
         QtCore.QCoreApplication.instance().quit()
         
 
-
+######################################################################################################
+### 2. Klasse SignUp
 
 class SignUp(object):
 
@@ -210,7 +206,8 @@ class SignUp(object):
 
         self.pushButton_3.clicked.connect(self.openAnmeldung)
 
-        #self.pushButton_3.clicked.connect(self.signup_button_click)
+
+######################################################################################################
                
 
 # Niki

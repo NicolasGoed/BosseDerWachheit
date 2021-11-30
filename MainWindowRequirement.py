@@ -26,7 +26,7 @@ class MainFunction(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(825, 600)
-        #MainWindow.setWindowOpacity(-5.0)
+        #MainWindow.setWindowOpacity(-5.0) // Niki, das war noch von dir drin, habe ich rausgemacht, da ich sonst keine Fenster in meinem Screen gesehen habe // Thi
         self.verticalLayoutWidget = QtWidgets.QWidget(MainWindow)
         self.verticalLayoutWidget.setGeometry(QtCore.QRect(20, 40, 781, 461))
         self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
@@ -36,7 +36,7 @@ class MainFunction(object):
         self.verticalLayout.setObjectName("verticalLayout")
         
         self.CreateRequirement = QtWidgets.QPushButton(self.verticalLayoutWidget)
-        self.CreateRequirement.setObjectName("Anforderung erstellen")
+        self.CreateRequirement.setObjectName("Anforderungskatalog")
         self.verticalLayout.addWidget(self.CreateRequirement)
         
         self.label = QtWidgets.QLabel(self.verticalLayoutWidget)
@@ -62,7 +62,7 @@ class MainFunction(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-# Adding projects from Database to QListObjects
+        # Adding projects from Database to QListObjects
         for aTuple in showProjectsName():
             self.RequirementList.addItems(aTuple)
 
@@ -70,7 +70,7 @@ class MainFunction(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.CreateRequirement.setText(_translate("MainWindow", "Anforderung erstellen"))
+        self.CreateRequirement.setText(_translate("MainWindow", "Anforderungskatalog"))
         self.AddProjectEdit.setPlaceholderText(_translate("MainWindow", "Projekt hinzufügen"))
         self.AddProject.setText(_translate("MainWindow", "Projekt hinzufügen"))
         self.DeleteProject.setText(_translate("MainWindow", "Projekt löschen"))
@@ -113,12 +113,10 @@ class MainFunction(object):
     def open_button_click_requirement(self):
         try:
             selectedProject = self.RequirementList.currentItem().text()
-            #self.openCreateRequirement()
             currentuser = self.currentuser
             self.window = QtWidgets.QDialog()
             self.ui = Anforderungsliste(selectedProject, currentuser)
             self.ui.setupUi(self.window)
-            #MainWindow.hide()
             self.window.show()
         
         except:

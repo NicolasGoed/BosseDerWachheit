@@ -33,7 +33,7 @@ class LastenheftFenster(object):
         self.label_3.setGeometry(QtCore.QRect(50, 20, 101, 31))
         self.label_3.setObjectName("Projektname")
         self.lineEdit = QtWidgets.QLineEdit(Dialog)
-        self.lineEdit.setGeometry(QtCore.QRect(50, 50, 361, 22))
+        self.lineEdit.setGeometry(QtCore.QRect(50, 50, 400, 22))
         self.lineEdit.setText("")
         self.lineEdit.setObjectName("lineEdit Projektname")
 
