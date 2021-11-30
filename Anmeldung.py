@@ -19,6 +19,7 @@ from PyQt5.QtWidgets import QMessageBox
 ######################################################################################################
 ### 1. Klasse Ui_dialog
 
+# Niki - Bitte mach du die Klassenbschreibung --> Code Testen und auf schreiben was in dieser Klasse passiert
 class Ui_dialog(object):
     """[summary]
 
@@ -28,8 +29,15 @@ class Ui_dialog(object):
 
 
     def openWindow(self):
-       """[summary]
+       """öffnet ein neues Fenster um einen neuen User zu registieren
+            * versteckt das aktuelle Fenster
+            * öffnet das neue Fenster
 
+       Test:
+            * checkt, ob das Fenster schon geöffnet ist
+
+        Source:
+            * https://www.youtube.com/watch?v=dRRpbDFnMHI
        """
        self.window = QtWidgets.QDialog()
        self.ui = SignUp()
@@ -37,7 +45,11 @@ class Ui_dialog(object):
        dialog.hide()
        self.window.show()
 
+
     def openLogin(self):
+       """
+       öffnet ein neues Fenster "Projekte" in der dann eine Übersicht aller Projekt ist. 
+       """
        self.window = QtWidgets.QDialog()
        self.ui = MainFunction()
        self.ui.setupUi(self.window)
@@ -137,7 +149,6 @@ class SignUp(object):
        uname = self.lineEdit_2.text()
        pword = self.lineEdit.text()
        cword = self.lineEdit_3.text()
-        # print(shost)
        if pword == cword:
             createUser(uname, pword)
             QtWidgets.QApplication.activeWindow().close()             
@@ -164,11 +175,9 @@ class SignUp(object):
         self.label_2.setObjectName("label Passwort")
         self.lineEdit_2 = QtWidgets.QLineEdit(Dialog)
         self.lineEdit_2.setGeometry(QtCore.QRect(80, 90, 221, 31))
-        #self.lineEdit_2.setText("Username")
         self.lineEdit_2.setObjectName("lineEdit_2")
         self.lineEdit = QtWidgets.QLineEdit(Dialog)
         self.lineEdit.setGeometry(QtCore.QRect(80, 150, 221, 31))
-        #self.lineEdit.setText("Password")
         self.lineEdit.setEchoMode(QtWidgets.QLineEdit.Password)
         self.lineEdit.setObjectName("lineEdit")
         self.label = QtWidgets.QLabel(Dialog)
@@ -179,7 +188,6 @@ class SignUp(object):
         self.label_3.setObjectName("label Username")
         self.lineEdit_3 = QtWidgets.QLineEdit(Dialog)
         self.lineEdit_3.setGeometry(QtCore.QRect(80, 210, 221, 31))
-        #self.lineEdit_3.setText("Confirm passowrd")
         self.lineEdit_3.setEchoMode(QtWidgets.QLineEdit.Password)
         self.lineEdit_3.setObjectName("lineEdit_3")
         self.label_4 = QtWidgets.QLabel(Dialog)

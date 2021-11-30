@@ -62,7 +62,7 @@ def getSpecificationText(reqname):
     """, 
     (reqname, ))
     dataspectextarray = list(dataspectext)
-    print(dataspectextarray)
+    #print(dataspectextarray)
     return dataspectextarray
 #getSpecificationText("req24")
 
