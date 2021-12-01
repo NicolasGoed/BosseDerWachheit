@@ -407,7 +407,7 @@ def mmm():
 def mmm1():
     msg = QMessageBox()
     msg.setWindowTitle("Fehler")
-    msg.setText("Bitte wählen Sie eine Anforderung zum Änderung aus.")
+    msg.setText("Bitte wählen Sie eine Anforderung zum Ändern aus.")
     x = msg.exec_()
 
 ##########################################################

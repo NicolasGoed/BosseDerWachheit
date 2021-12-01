@@ -36,7 +36,7 @@ class MainFunction(object):
         self.verticalLayout.setObjectName("verticalLayout")
         
         self.CreateRequirement = QtWidgets.QPushButton(self.verticalLayoutWidget)
-        self.CreateRequirement.setObjectName("Anforderungskatalog")
+        self.CreateRequirement.setObjectName("Projekt öffnen")
         self.verticalLayout.addWidget(self.CreateRequirement)
         
         self.label = QtWidgets.QLabel(self.verticalLayoutWidget)
@@ -70,7 +70,7 @@ class MainFunction(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.CreateRequirement.setText(_translate("MainWindow", "Anforderungskatalog"))
+        self.CreateRequirement.setText(_translate("MainWindow", "Projekt öffnen"))
         self.AddProjectEdit.setPlaceholderText(_translate("MainWindow", "Projekt hinzufügen"))
         self.AddProject.setText(_translate("MainWindow", "Projekt hinzufügen"))
         self.DeleteProject.setText(_translate("MainWindow", "Projekt löschen"))
