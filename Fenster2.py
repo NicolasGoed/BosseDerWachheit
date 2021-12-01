@@ -108,6 +108,7 @@ class Anforderungsliste(object):
         self.label.setGeometry(QtCore.QRect(40, 100, 251, 16))
         self.label.setObjectName("label Anforderungsliste")
         self.LastenUndPflichtenheft = QtWidgets.QListWidget(Fenster2)
+        self.LastenUndPflichtenheft.setWordWrap(True)
 
         # Adding requirements to QListWidget with ProjectName = SelectedProject 
         # (ProjectId zu kompliziert, da ich bis jetzt nur das mit dem ProjectName habe // Thi )

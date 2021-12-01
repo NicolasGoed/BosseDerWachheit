@@ -21,12 +21,13 @@ class LastenheftFenster(object):
     # Niki Dok
     def setupUi(self, Dialog):
         Dialog.setObjectName("Lastenheft")
-        Dialog.resize(500, 600)
+        Dialog.resize(800, 900)
         self.label_2 = QtWidgets.QLabel(Dialog)
         self.label_2.setGeometry(QtCore.QRect(50, 90, 101, 31))
         self.label_2.setObjectName("Anforderungen")
         self.listWidget = QtWidgets.QListWidget(Dialog)
-        self.listWidget.setGeometry(QtCore.QRect(50, 120, 400, 400))
+        self.listWidget.setWordWrap(True)
+        self.listWidget.setGeometry(QtCore.QRect(50, 120, 700, 730))
         self.listWidget.setObjectName("listWidget")
         
         self.label_3 = QtWidgets.QLabel(Dialog)
@@ -36,9 +37,13 @@ class LastenheftFenster(object):
         self.lineEdit.setGeometry(QtCore.QRect(50, 50, 400, 22))
         self.lineEdit.setText("")
         self.lineEdit.setObjectName("lineEdit Projektname")
-
+        reqCount = 1 
         for aTuple in getAllRequirements(self.selectedProject):
+            self.listWidget.addItem(str(reqCount) + ". Anforderung")
+            reqCount = reqCount + 1
             self.listWidget.addItems(aTuple)
+            self.listWidget.addItem("")
+
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)

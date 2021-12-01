@@ -22,24 +22,25 @@ class PflichtenheftFenster(object):
     # Niki Dok
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(950, 600)
-        self.label = QtWidgets.QLabel(Dialog)
-        self.label.setGeometry(QtCore.QRect(50, 100, 61, 16))
-        self.label.setObjectName("Lastenheft")
+        Dialog.resize(800,900)
+        #self.label = QtWidgets.QLabel(Dialog)
+        #self.label.setGeometry(QtCore.QRect(50, 100, 61, 16))
+        #self.label.setObjectName("Lastenheft")
         self.label_2 = QtWidgets.QLabel(Dialog)
-        self.label_2.setGeometry(QtCore.QRect(500, 100, 91, 16))
+        self.label_2.setGeometry(QtCore.QRect(50, 100, 91, 16))
         self.label_2.setObjectName("Pflichtenheft")
-        self.listWidget = QtWidgets.QListWidget(Dialog)
-        self.listWidget.setGeometry(QtCore.QRect(50, 120, 400, 250))
-        self.listWidget.setObjectName("Lastenheft")
+        #self.listWidget = QtWidgets.QListWidget(Dialog)
+        #self.listWidget.setGeometry(QtCore.QRect(50, 120, 400, 250))
+        #self.listWidget.setObjectName("Lastenheft")
 
-        for cTuple in getAllRequirements(self.selectedProject):
-            self.listWidget.addItems(cTuple)
+        #for cTuple in getAllRequirements(self.selectedProject):
+        #    self.listWidget.addItems(cTuple)
             
 
 
         self.listWidget_2 = QtWidgets.QListWidget(Dialog)
-        self.listWidget_2.setGeometry(QtCore.QRect(500, 120, 400, 250))
+        self.listWidget_2.setWordWrap(True)
+        self.listWidget_2.setGeometry(QtCore.QRect(50, 120, 700, 730))
         self.listWidget_2.setObjectName("Pflichtenheft")
 
 
@@ -51,14 +52,24 @@ class PflichtenheftFenster(object):
         self.lineEdit.setText("")
         self.lineEdit.setObjectName("lineEdit Projektname")
 
+        reqcount = int(1)
         for aTuple in getAllRequirements(self.selectedProject):
            tup1 = ''.join(aTuple)
+           self.listWidget_2.addItem(str(reqcount) + ". Anforderung: ")
+           self.listWidget_2.addItem(tup1)
+           reqcount = int(reqcount) + int(1) 
+           self.listWidget_2.addItem("")
+           specIndex = 1
            for bTuple in getSpecificationText(tup1):     
               tup2 = "".join(bTuple) 
-              a = ("Anforderung: " + tup1 + ", Spezifikation: " + tup2,)
-
-              self.listWidget_2.addItems(a)
-
+              #a = (str(specIndex) + ". Spezifikation: " + tup2,)
+              
+              #self.listWidget_2.addItems(a)
+              self.listWidget_2.addItem(str(specIndex) + ". Spezifikation: ")
+              self.listWidget_2.addItem(tup2)
+              specIndex = int(specIndex) + 1
+           self.listWidget_2.addItem("")
+           self.listWidget_2.addItem("")
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
@@ -68,7 +79,7 @@ class PflichtenheftFenster(object):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Pflichtenheft"))
-        self.label.setText(_translate("Dialog", "Lastenheft"))
+        #self.label.setText(_translate("Dialog", "Lastenheft"))
         self.label_2.setText(_translate("Dialog", "Pflichtenheft"))
         self.label_3.setText(_translate("Dialog", "Projektname"))
         self.lineEdit.setPlaceholderText(_translate("AnforderungUndSpezifikation", "Projektname"))

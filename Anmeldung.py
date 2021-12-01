@@ -13,6 +13,7 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIcon
 #from signUp import SignUp
 from MainWindowRequirement import MainFunction
+from RequirementManagement import getAllRequirements
 from UserManagement import createUser, checkUser
 from PyQt5.QtWidgets import QMessageBox
 
@@ -243,3 +244,4 @@ if __name__ == "__main__":
     ui.setupUi(dialog)
     dialog.show()
     sys.exit(app.exec_())
+
