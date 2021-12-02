@@ -37,6 +37,7 @@ class LastenheftFenster(object):
         self.lineEdit.setGeometry(QtCore.QRect(50, 50, 400, 22))
         self.lineEdit.setText("")
         self.lineEdit.setObjectName("lineEdit Projektname")
+        
         reqCount = 1 
         for aTuple in getAllRequirements(self.selectedProject):
             self.listWidget.addItem(str(reqCount) + ". Anforderung")
