@@ -103,8 +103,13 @@ def showRequirements():
     for data in c.execute('SELECT * FROM Requirements'):
         print(data)
 
-# Dokumentation mache ich // Thi
+
 def deleteRequirement(requirementname):
+    """löscht die ausgewählte Anforderung
+
+    Args:
+        requirementname (str): Name der ausgewählten Anforderung
+    """
     c.execute('DELETE FROM Requirements WHERE name = ?', (requirementname, ))
     um_connection.commit()
     
