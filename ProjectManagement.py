@@ -17,21 +17,38 @@ import UserManagement
 currentProject = ''
 
 def getcurrentProject():
+    """Eine Methode die das aktuelle Projekt,ausgewählt anhand der ID, übergibt 
+
+    Returns:
+        int: die ID des aktuellen Projekts 
+    """
     return currentProject
 
+#Connection zur Datenbank herstellen und Cursor definieren und setzen
 um_connection = um.connect("Database.db")
 c = um_connection.cursor()
 
-## DROP löscht jedes Mal alle Projekte --> nicht sinnvoll --> bitte auskommentiert lassen // Thi
+# DROP löscht jedes Mal alle Projekte bzw die Tabelle (Nur für Testzwecke!)
 # c.execute('DROP TABLE Projects')
 
-
+# Wenn nicht schon existent, wird die Tabelle für die Projekte in der Datenbank erstellt
 createTable = "CREATE TABLE IF NOT EXISTS Projects( projectid INTEGER UNIQUE PRIMARY KEY, projectname TEXT NOT NULL, creationdate TEXT, user TEXT NOT NULL REFERENCES user(username))"
 c.execute(createTable)
 
 
 def createProject(projectname):
-    #projectname = input('Projectname: ') // sonst funktioniert die Connection nicht// Thi
+    """Methode zum Erstellen eines Projekts in der Datenbank. 
+       Mit den Daten die der Benutzer im GUI eingibt
+       Mit dem Projektnamen wird dann die ID des Prjekts Selected und für die Methode currentProjekt gespeichert 
+
+    Args:
+        projectname (String): Den Projektnamen den der Benutzer im GUI in das Textefeld eingibt wird dieser Methode übergeben und in der Datenbank eingesetzt
+
+    Tests:
+        *Prüfen, ob das Projekt korrekt in die Datenbank eingefügt wurde mit den passenden Werten.
+        *Versuchen zwei Projekte mit dem gleichen Namen zu erstellen
+    """
+
     projectdate = datetime.now()
     dateString = projectdate.strftime("%d/%m/%Y %H:%M:%S")
     c.execute('INSERT INTO Projects (projectname, creationdate, user) VALUES (?, ?, ? )', (projectname, dateString, UserManagement.currentUser ))
@@ -41,42 +58,52 @@ def createProject(projectname):
         
     um_connection.commit()
 
-#createProject()
-
 
 
 
 def deleteProject(currentProject):
-    c.execute('DELETE FROM Projects WHERE projectname = ? ', (currentProject, )) #// in name geändert, da das sonst nicht funktioniert // Thi
+    """Möglichkeit ein Projekt löschen zu können
+
+    Args:
+        currentProject (String): Das aktuelle Projekt anhand des Projektnamens (Sollte erst ID sein aber wurde später aufgrund von Problemen im Frontend geändert)
+
+    Tests:
+        *Prüfen, ob das Projekt korrekt gelöscht wurde 
+        *Prüfen ob nach Löschug wieder möglich ist ein Projekt mit diesem Namen zu erstellen
+    """
+    c.execute('DELETE FROM Projects WHERE projectname = ? ', (currentProject, )) 
     um_connection.commit()
 
-#Original
-#def showProjects():
- #   for data in c.execute('SELECT * FROM Projects'):
-  #      print(data)
-#        return data
+
 
 
 def showProjects():
+    """Methode um alle vorhandenen Projekte anzuzeigen
+
+    Returns:
+        list: eine Liste aller in der Datenbank per SELECT Abfrage gefundenen Projekte 
+
+    Tests:
+        *Sind alle Projekte korrekt vorhanden? 
+        *Wird die Liste korrekt erstellt und enthält sie alle Einträge und Werte zu den Projekten der Datenbank
+    """
     data = list(c.execute('SELECT * FROM Projects'))
     return data
-#print(showProjects())
-#showProjects()
+
 
 
 def showProjectsName():
-      
+    """Methode um nur die Namen aller Projekte auszulesen
+
+    Returns:
+        list: eine Liste aller Projektnamen die per SELECT Abfrage ausgelsen werden
+
+    Tests:
+        *Werden insgesamt alle Namen ausgegben
+        *Sind die Namen korrekt zu den Einträgen und fehlen nicht einzeln aber dafür andere doppelt 
+        *Werden die Daten korrekt in die Liste durch SQL übergeben 
+    """
     data = c.execute('SELECT DISTINCT projectname FROM Projects')
     array = list(data)
     return array
-
-
-
-#UserManagement.showUsers()
-#createProject()
-#createProject()
-#showProjects()
-#deleteProject()
-#print("------------")
-#showProjects()
 
