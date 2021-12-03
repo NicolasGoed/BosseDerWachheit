@@ -1,3 +1,15 @@
+"""Project Management Modul
+        * Erzeugt in der Datenbank die Tabelle für User
+        * Bietet alle Funktionen um mit der Userdatenbank zu interagieren 
+        * Bietet Funktionen zum Auslesen der Userdatenbank
+
+
+authors: Thi Tran, Niklas Schenk, Nicolas Gödeke, Niklas Langer (Bosse der Wachheit)
+date: 05.12.2021
+version: 0.0.1
+license: Public Domain
+"""
+
 import sqlite3 as um
 import getpass
 from sqlite3.dbapi2 import connect

@@ -1,3 +1,15 @@
+"""Project Management Modul
+        * Erzeugt in der Datenbank die Tabelle für Projekte
+        * Bietet alle Funktionen um mit der Projektdatenbank zu interagieren 
+        * Bietet Funktionen zum auslesen der Projektdatenbank
+
+
+authors: Thi Tran, Niklas Schenk, Nicolas Gödeke, Niklas Langer (Bosse der Wachheit)
+date: 05.12.2021
+version: 0.0.1
+license: Public Domain
+"""
+
 from datetime import datetime
 import sqlite3 as um
 import UserManagement

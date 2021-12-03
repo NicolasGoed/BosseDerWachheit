@@ -1,3 +1,15 @@
+"""Project Management Modul
+        * Erzeugt in der Datenbank die Tabelle für Anforderungen
+        * Bietet alle Funktionen um mit der Anforderungsdatenbank zu interagieren 
+        * Bietet Funktionen zum Auslesen der Anforderungsdatenbank
+
+
+authors: Thi Tran, Niklas Schenk, Nicolas Gödeke, Niklas Langer (Bosse der Wachheit)
+date: 05.12.2021
+version: 0.0.1
+license: Public Domain
+"""
+
 from datetime import datetime
 import sqlite3 as um
 import UserManagement
