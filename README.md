@@ -129,7 +129,10 @@ Infos zu der Datenbankstruktur die wir nutzen:
 Wir nutzen für diese Projekt eine SQLite Datenbank. 
 
 Diese enthält die Tabellen Users, Projects und Requirements
-Nachfolgend kurz eine Erklärung und die Spalten pro Tabelle
+Hinweis: Manche Attribute in der Datenbank und die dazugehörigen Funktionen im Backend wurden letzendlich nicht verwendet und sind für spätere Versionen
+bereits implementiert.
+
+Nachfolgend kurz eine Erklärung und die einzelnen Spalten pro Tabelle:
 
 Users: Tabelle für die Benutzerdaten
 * Username: Eindeutig und Primärschlüssel
