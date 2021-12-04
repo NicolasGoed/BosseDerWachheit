@@ -159,6 +159,7 @@ def changePassword():
 #c.execute('DROP TABLE users')
 
 # Erstellen der Tabelle für die Benutzerdaten innerhalb der SQLite Datenbank, wenn sie noch nicht existiert 
+# Genauere Infos hierzu in der README.txt
 createTable = "CREATE TABLE IF NOT EXISTS users( username text UNIQUE PRIMARY KEY, password text)"
 c.execute(createTable)
 

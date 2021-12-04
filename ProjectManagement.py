@@ -32,6 +32,7 @@ c = um_connection.cursor()
 # c.execute('DROP TABLE Projects')
 
 # Wenn nicht schon existent, wird die Tabelle für die Projekte in der Datenbank erstellt
+# Genauere Infos hierzu in der README.txt
 createTable = "CREATE TABLE IF NOT EXISTS Projects( projectid INTEGER UNIQUE PRIMARY KEY, projectname TEXT NOT NULL, creationdate TEXT, user TEXT NOT NULL REFERENCES user(username))"
 c.execute(createTable)
 
