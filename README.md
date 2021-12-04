@@ -54,11 +54,20 @@ Erstellen, Bearbeiten und Löschen eines Projekts
 
 Nach einem erfolgreichem Login öffnet sich ein neues Fenster für die Projekte
 Dieses bietet folgende Elemente und Funktionen:
-*Button Projekt öffnen --> Das Ausgewählte Projekt wird in einem Neuen Fenster zur Weiteren Bearbeitung geöffnet
-*Liste aller existierenden Projekte --> Hier kann das zu öffnende oder löschende Projekt ausgewählt werden
-*Textfeld für den Namen eines neuen Projekts --> Hier kann der Name des neuen Projekts eingegeben werden
-*Button Projekt hinufügen --> Hier wird das eingegebene Projekt neu erstellt und hinzugefügt
-*Button Projekt löschen --> Möglichkeit das Ausgewähle Projekt zu löschen
+* Button Projekt öffnen --> Das Ausgewählte Projekt wird in einem Neuen Fenster zur Weiteren Bearbeitung geöffnet
+* Liste aller existierenden Projekte --> Hier kann das zu öffnende oder löschende Projekt ausgewählt werden
+* Textfeld für den Namen eines neuen Projekts --> Hier kann der Name des neuen Projekts eingegeben werden
+* Button Projekt hinufügen --> Hier wird das eingegebene Projekt neu erstellt und hinzugefügt
+* Button Projekt löschen --> Möglichkeit das Ausgewähle Projekt zu löschen
 
 
 #############################################################################################
+
+Lasten und Pflichten Fenster
+
+Nach der Auswahl des Projekts wird das Fenster für Lasten und Pflichten ausgewählt.
+Dies ist der zentrale Fenster, in welchem die Anforderungen für das Lasten- und Pflichtenheft erstellt, bearbeitet
+und verwaltet werden können. 
+Das Fenster ist wie folgt aufgebaut:
+
+* Projektname -- > Zeigt den Projektnamne des aktuellen Projektes 
