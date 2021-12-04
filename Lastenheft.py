@@ -5,6 +5,7 @@
 authors: Thi Tran, Niklas Schenk, Nicolas Gödeke, Niklas Langer (Bosse der Wachheit)
 date: 05.12.2021
 version: 0.0.1
+license: Public Domain
 """
 
 from PyQt5 import QtCore, QtGui, QtWidgets

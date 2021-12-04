@@ -71,3 +71,35 @@ und verwaltet werden können.
 Das Fenster ist wie folgt aufgebaut:
 
 * Projektname -- > Zeigt den Projektnamne des aktuellen Projektes 
+* Erstellen --> Button für die Erstellung einer neuen Anforderung 
+* Bearbeiten --> Button für die Bearbeitung der in der Anforderungsliste ausgewählten Anforderung 
+* Löschen --> Löscht die Anforderung, welche Sie in der Anfoderungsliste ausgewählt haben 
+* Anforderungsliste -> Listet alle Anforderungen eines Projektes auf. Die Anforderungen werden dabei mit ihrem 
+  Anforderungstext dargestellt
+* Lastenheft --> Button zur Anzeige des Lastenheftes 
+* Pflichtenheft --> Button zur Anzeige des Pflichtenheftes 
+
+
+#############################################################################################
+
+Anforderung Erstellen/Bearbeiten
+
+In den Fenstern "Requirement erstellen" und "Requirement bearbeiten" können die Anforderungen erstellt, bzw. im 
+Nachhinhein bearbeiten werden. Dabei können zu dem Anforderungstext auch zeitgleich der Spezifikationstext hin-
+zugefügt werden. Die einzelnen Spezifikationen zu einer Anforderung können mit Absätzen getrennt werden.
+
+* User --> zeigt den aktuell angemeldeten User an
+* Projektname --> zeigt das aktuelle Projekt, in dem die Anforderungen erstellt werden
+* Anderung --> Textfeld, in dem der Anforderungstext eingegeben werden kann
+* Spezifikation/en --> Textfeld, in dem eine oder meherere Spezifikation/en zu einer Anforderung erfasst werden        können. Falls verschiedene Spezifikationen zu einer Anforderung hinzugefügt werden sollen, trennen Sie diese mit Absätzen, bzw. mit der Enter-Taste
+* Speichern --> Speichert die neue Anforderung/ Die Änderungen zu der Anforderungen 
+
+
+#############################################################################################
+
+Lastenheft/Pflichtenheft 
+
+Die Fenster Lasten-, bzw. Pflichenheft zeigen das Lasten- oder Pflichtenheft des Projektes an.
+
+* Lastenheft --> Im Lastenheft-Fenster wird oben der Projektname angezeigt, zu dem das Lastenheft gehört. Darunter werden die Anforderungen aufgelistet. Dabei werden die Anforderungen nummeriert. Die Anforderungstexte befinden sich unter der Nummerierung. Einzelne Anforderungen werden durch eine Leerzeile getrennt. 
+* Lastenheft --> Im Pflichtenheft-Fenster wird oben der Projektname angezeigt, zu dem das Pflichtenheft gehört. Darunter werden die Anforderungen mit ihren Spezifikationen aufgelistet. Dabei werden sowohl die Anforderungen als auch die Spezifikationen nummeriert. Spezifikationen werden durch eine Leerzeile getrennt, die einzelnen Anforderungen werden durch zwei Leerzeilen getrennt.
